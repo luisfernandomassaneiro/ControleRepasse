@@ -1,0 +1,42 @@
+@import "../../../../styles/variables";
+
+@media (max-width: $screen-xs-max) {
+  .advanced-filters {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.advanced-filters {
+  nz-collapse-panel {
+    border: 0 !important;
+
+    .ant-collapse-content-box {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .ant-collapse-header {
+      padding: 0 !important;
+      display: inline !important;
+      color: $primary-color !important;
+      text-decoration: underline;
+
+      .anticon {
+        position: unset !important;
+        vertical-align: bottom !important;
+        margin-bottom: -2px !important;
+        margin-left: 2px !important;
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .filter-layout {
+    .action-buttons {
+      padding-left: 10px !important;
+    }
+  }
+}

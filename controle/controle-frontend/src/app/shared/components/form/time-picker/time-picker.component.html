@@ -1,0 +1,17 @@
+<div class="example-input">
+  <input
+    (blur)="blur()" (focus)="focused = true"
+    (input)="onInput($event.target)"
+    (ngModelChange)="modelChange()"
+    [(ngModel)]="value"
+    [disabled]="disabled"
+    [nzAutocomplete]="auto"
+    [placeholder]="placeholder"
+    nz-input
+    type="text"/>
+  <nz-autocomplete #auto nzBackfill>
+    <nz-auto-option *ngFor="let option of shown" [nzValue]="option.representation">
+      {{ option.representation }}
+    </nz-auto-option>
+  </nz-autocomplete>
+</div>

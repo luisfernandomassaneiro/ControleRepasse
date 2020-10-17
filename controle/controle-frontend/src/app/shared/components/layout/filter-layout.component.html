@@ -1,0 +1,36 @@
+<form (ngSubmit)="grid.refresh(true)" class="filter-layout" nz-form nzLayout="vertical">
+
+  <div nz-row>
+    <div [nzMd]="container" nz-col>
+      <ng-content></ng-content>
+    </div>
+    <div [nzMd]="24 - container" class="hidden-xs" nz-col>
+      <nz-form-item class="mb5 action-buttons">
+        <nz-form-label [nzNoColon]="true" class="hidden-sm">&nbsp;</nz-form-label>
+        <nz-form-control>
+          <button nz-button nzType="primary" style="margin-right: 10px">
+            {{'general.buttons.search' | translate}}<i class="fas fa-filter"></i>
+          </button>
+          <a (click)="grid.reset();" [nzType]="'default'" nz-button
+             style="margin: 0">{{ 'general.buttons.clear' | translate }}</a>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div class="advanced-filters">
+    <nz-collapse *ngIf="advanced" [nzBordered]="false">
+      <nz-collapse-panel [nzHeader]="header">
+        <div [ngTemplateOutlet]="advanced"></div>
+        <ng-template #header>
+          <span style="float: left; text-decoration: underline;">{{'general.labels.filter' | translate}}</span>
+        </ng-template>
+      </nz-collapse-panel>
+    </nz-collapse>
+  </div>
+
+  <button class="xs-only" nz-button nzBlock nzType="primary" style="margin-right: 10px">
+    {{'general.buttons.search' | translate}} <i class="fas fa-filter"></i>
+  </button>
+
+</form>

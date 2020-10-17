@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report" pageWidth="550" pageHeight="842" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="530" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="ebcfc730-125e-47fc-8d92-925a4b40d16d">
+	<property name="net.sf.jasperreports.export.xls.freeze.row" value="6"/>
+	<property name="net.sf.jasperreports.page.break.no.pagination" value="apply"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.1" value="pageHeader"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.2" value="pageFooter"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.3" value="title"/>
+	<style name="Title" hTextAlign="Center" vTextAlign="Bottom" vImageAlign="Bottom" markup="none" fontSize="12" isBold="true"/>
+	<style name="SubTitle" hTextAlign="Center" vTextAlign="Bottom" vImageAlign="Bottom" markup="none" fontSize="10" isBold="true"/>
+	<style name="Header" markup="none" fontName="SansSerif" fontSize="8" isBold="true"/>
+	<style name="Detail" vTextAlign="Middle" vImageAlign="Middle" isBlankWhenNull="true" fontName="SansSerif" fontSize="8">
+		<box>
+			<topPen lineWidth="1.0" lineStyle="Solid"/>
+			<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+		</box>
+	</style>
+	<style name="FooterInfo" fontName="SansSerif" fontSize="10"/>
+	<parameter name="USER" class="java.lang.String"/>
+	<parameter name="LOGO" class="java.net.URL" isForPrompting="false"/>
+    <field name="descricao" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<textField>
+				<reportElement style="Title" x="0" y="51" width="500" height="23" uuid="f06cd44a-d8fa-4d7b-ab79-e5ca730763b3"/>
+				<textFieldExpression><![CDATA[$R{general.reports.title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="SubTitle" x="0" y="74" width="500" height="17" uuid="26674f43-87fe-4c45-aa22-e9d11e889191"/>
+				<textFieldExpression><![CDATA[$R{page.security.carro.report.title}]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank" evaluationTime="Report">
+				<reportElement x="0" y="0" width="190" height="51" uuid="aea3739b-1122-4871-8dd8-badad39d3412"/>
+				<imageExpression><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="91" width="500" height="19" uuid="a066fc39-dd85-4785-8284-712501a9639d"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="Header" x="0" y="0" width="180" height="15" uuid="174ed524-1c10-4c47-bd9b-6c92b8f1cfa3"/>
+				<textFieldExpression><![CDATA[$R{page.security.carro.field.descricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="180" height="15" uuid="bd1e000d-acd9-4a2e-b310-27cadc9e3774">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement style="FooterInfo" x="0" y="19" width="80" height="20" uuid="cf9c57ae-df99-4f6a-a2a2-0f66e780ebb2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$R{general.reports.emissao} + ':']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FooterInfo" x="80" y="19" width="420" height="20" uuid="906fac4a-efad-4457-a172-772c52756198"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FooterInfo" x="0" y="39" width="80" height="20" uuid="647aba5c-6d75-4cf6-bb15-6ee8e44f2d1f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$R{general.reports.emitido_por} + ':']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FooterInfo" x="80" y="39" width="420" height="20" uuid="906fac4a-efad-4457-a172-772c52756198"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{USER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="500" height="19" uuid="46f54e1a-d754-4e64-9648-e4160e33a52d"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,31 @@
+<nz-collapse>
+  <nz-collapse-panel *ngFor="let item of items" [ngClass]="{'dont-collapse': !item.children?.length}"
+                     [nzActive]="false" [nzHeader]="head"
+                     class="collapse-right">
+    <ng-template #head>
+      <a (click)="onItemClick(item)" [ngClass]="{'root-link': root}" [ngStyle]="{'padding-left': padding + 'px'}" [routerLink]="item.link ? item.link : null"
+         [target]="item.target" href="#">
+        <span *ngIf="item.icon" [ngClass]="{'hidden-collapse': !root}">
+          <ng-container [ngSwitch]="item.icon.type">
+            <i *ngSwitchCase="'icon'"
+               [nzIconfont]="item.icon.iconfont" [nzSpin]="item.icon.spin" [nzTheme]="item.icon.theme" [nzTwotoneColor]="item.icon.twoToneColor"
+               [nzType]="item.icon.value" class="sidebar-nav__item-icon" nz-icon>
+            </i>
+            <i *ngSwitchCase="'iconfont'" [nzIconfont]="item.icon.iconfont" class="sidebar-nav__item-icon" nz-icon></i>
+            <img *ngSwitchCase="'img'" [src]="item.icon.value" alt="Image Icon"
+                 class="sidebar-nav__item-icon sidebar-nav__item-img"/>
+            <i *ngSwitchDefault class="sidebar-nav__item-icon {{ item.icon.value }}"></i>
+          </ng-container>
+        </span>
+        <span class="menu-label hidden-collapse">{{item.i18n | translate}}</span>
+      </a>
+    </ng-template>
+    <app-sidebar-item
+      (menuSelected)="onItemClick($event)"
+      *ngIf="item.children && item.children.length"
+      [items]="item.children"
+      [level]="level+1"
+      [root]="false"
+    ></app-sidebar-item>
+  </nz-collapse-panel>
+</nz-collapse>

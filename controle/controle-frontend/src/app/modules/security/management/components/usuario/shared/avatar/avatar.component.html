@@ -1,0 +1,19 @@
+<div style="text-align: center; position: relative">
+
+  <img alt="avatar" src="{{ avatar || '/assets/img/avatar-default.png' }}"
+       style="width: 150px; height: 150px; border: 3px solid lightgray; display: block; margin: auto; border-radius: 50%;">
+
+  <nz-upload [nzBeforeUpload]="beforeUpload" nzAction="#">
+    <a class="btn-link" href="javascript:void(0)">{{ 'security.usuario.label.load_picture' | translate }}</a>
+  </nz-upload>
+
+  <div *ngIf="running" class="loader">
+    <div class="ant-spin ant-spin-spinning">
+      <span class="ant-spin-dot ant-spin-dot-spin">
+        <i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i
+        class="ant-spin-dot-item"></i>
+      </span>
+    </div>
+  </div>
+
+</div>

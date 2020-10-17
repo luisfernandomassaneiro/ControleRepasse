@@ -1,0 +1,16 @@
+.has-feedback {
+
+  input.ant-input.ng-valid.ng-touched.ng-dirty, nz-input-number.ant-input-number.ng-valid.ng-touched.ng-dirty {
+    border-color: #52c41a !important;
+  }
+
+  nz-select.ant-select.ant-select-enabled.ng-valid.ng-touched.ng-dirty {
+    div.ant-select-selection {
+      border-color: #52c41a !important;
+    }
+  }
+}
+
+nz-input-number.ant-input-number {
+  width: 100%;
+}

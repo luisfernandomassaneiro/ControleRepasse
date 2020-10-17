@@ -1,0 +1,24 @@
+<div style="position: relative">
+  <nz-date-picker (ngModelChange)="onCalendarChanged($event)" [(ngModel)]="mdl.iso" [nzDateRender]="nzDateRender"
+                  [nzDisabledDate]="disabledDateFn()" [nzFormat]="nzFormat"
+                  [nzOpen]="state.calendar"
+                  [nzRenderExtraFooter]="nzRenderExtraFooter"
+                  [nzShowToday]="nzShowToday"
+                  nzDropdownClassName="custom-input-picker"
+                  style="position: absolute; z-index: -1;"></nz-date-picker>
+
+  <nz-input-group [ngClass]="{'custom-date-input' : state.calendar}" [nzSuffix]="suffix" style="width: 100%">
+    <input (blur)="onInputBlur()" (click)="onInputClick($event)"
+           (focus)="$event.stopPropagation()"
+           (keydown)="onKeyPress($event)"
+           (ngModelChange)="onInputChanged($event)"
+           [(ngModel)]="mdl.format"
+           [disabled]="state.disabled"
+           [mask]="formats.mask"
+           [placeholder]="nzPlaceHolder" nz-dropdown nz-input/>
+  </nz-input-group>
+  <ng-template #suffix>
+    <i nz-icon nzTheme="outline" nzType="calendar" style="color: rgba(0,0,0,.25); font-size: 14px;"></i>
+  </ng-template>
+
+</div>

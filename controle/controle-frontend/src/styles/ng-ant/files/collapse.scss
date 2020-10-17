@@ -1,0 +1,36 @@
+@import "../../variables";
+
+.collapse-link {
+  border: 0 !important;
+
+  .ant-collapse-content-box {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .ant-collapse-header {
+    padding-left: 0 !important;
+    padding-right: 13px !important;
+    display: inline !important;
+    color: $primary-color !important;
+    text-decoration: underline;
+
+    .anticon {
+      left: unset !important;
+      right: 0 !important;
+    }
+  }
+}
+
+.collapse-right .ant-collapse-header {
+  padding-left: 16px !important;
+
+  .anticon {
+    left: unset !important;
+    right: 15px !important;
+  }
+}
+
+.ant-collapse-header {
+  color: $primary-color !important;
+}

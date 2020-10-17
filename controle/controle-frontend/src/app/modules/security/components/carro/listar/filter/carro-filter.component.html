@@ -1,0 +1,10 @@
+
+<app-filter-layout [grid]="grid" [size]="1" >
+  <div nz-row [nzGutter]="16">
+    <div nz-col [nzXs]="24" [nzMd]="24">
+      <app-form-item label="security.carro.field.descricao">
+        <input nz-input type="text" [(ngModel)]='filtro.descricao' [maxLength]='255'/>
+      </app-form-item>
+    </div>
+  </div>
+</app-filter-layout>

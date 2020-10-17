@@ -1,0 +1,83 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="Cesar.Silva (generated)" id="1558099985825-1">
+        <createTable tableName="associacao_perfil_recurso">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="associacao_perfil_recursoPK"/>
+            </column>
+            <column name="recurso" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="perfil" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Cesar.Silva (generated)" id="1558099985825-2">
+        <createTable tableName="associacao_usuario_perfil">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="associacao_usuario_perfilPK"/>
+            </column>
+            <column name="usuario" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="perfil" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Cesar.Silva (generated)" id="1558099985825-4">
+        <createTable tableName="perfil">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="perfilPK"/>
+            </column>
+            <column name="descricao" type="VARCHAR(255)"/>
+            <column name="nome" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Cesar.Silva (generated)" id="1558099985825-5">
+        <createTable tableName="usuario">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="usuarioPK"/>
+            </column>
+            <column name="username" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ativo" type="BIT" defaultValueBoolean="true"/>
+            <column name="avatar" type="CLOB"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nascimento" type="TINYBLOB"/>
+            <column name="nome" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(100)"/>
+            <column name="recovery_code" type="VARCHAR(255)"/>
+            <column name="recovery_expiration" type="TINYBLOB"/>
+            <column name="sexo" type="VARCHAR(2)"/>
+            <column name="tipo" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Cesar.Silva (generated)" id="1558099985825-8">
+        <addForeignKeyConstraint baseColumnNames="perfil" baseTableName="associacao_perfil_recurso" constraintName="FK_PERF_ASPR" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="perfil"/>
+        <addForeignKeyConstraint baseColumnNames="perfil" baseTableName="associacao_usuario_perfil" constraintName="FK_PERF_ASUP" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="perfil"/>
+        <addForeignKeyConstraint baseColumnNames="usuario" baseTableName="associacao_usuario_perfil" constraintName="FK_USUA_ASUP" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="usuario"/>
+    </changeSet>
+
+    <changeSet author="Cesar.Silva (generated)" id="1558099985825-12">
+        <addUniqueConstraint columnNames="email" constraintName="UC_USUARIOEMAIL_COL" tableName="usuario"/>
+        <addUniqueConstraint columnNames="username" constraintName="UC_USUARIOUSERNAME_COL" tableName="usuario"/>
+        <addUniqueConstraint columnNames="nome" constraintName="UC_PERFILNOME_COL" tableName="perfil"/>
+    </changeSet>
+
+</databaseChangeLog>

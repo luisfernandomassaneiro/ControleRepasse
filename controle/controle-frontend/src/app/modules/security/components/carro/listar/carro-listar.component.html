@@ -1,0 +1,43 @@
+<app-page-header
+    [title]="'security.carro.list.title'"
+    [breabcrumb]="[{label: 'menu.home', route: '/'}, {label: 'menu.security.carro'}]"></app-page-header>
+
+<nz-card>
+
+<app-carro-filter [filtro]="filtro" [grid]="gridWrapper"></app-carro-filter>
+
+<hr/>
+
+<app-list-buttons
+    (export)="report($event)"
+    [link]="['../incluir']"
+></app-list-buttons>
+
+  <div style="overflow-x: auto">
+      <nz-table
+        nzShowSizeChanger
+        [nzFrontPagination]="false"
+        [nzTotal]="gridWrapper.dataset.total"
+        [(nzPageIndex)]="gridWrapper.pageIndex"
+        [(nzPageSize)]="gridWrapper.pageSize"
+        [nzData]="gridWrapper.dataset.itens"
+        (nzPageIndexChange)="gridWrapper.refresh()"
+        (nzPageSizeChange)="gridWrapper.refresh()">
+        <thead (nzSortOrderChange)="gridWrapper.sort($event)">
+          <tr *ngIf="gridWrapper.dataset.itens?.length">
+            <th nzShowSort nzColumnKey='descricao' [nzSortOrder]="gridWrapper.direction('descricao')">{{ 'security.carro.field.descricao' | translate }}</th>
+            <th class="center">{{ 'general.labels.actions' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of gridWrapper.dataset.itens" class="clickable" (click)="view(data)">
+            <td>{{ data.descricao }}</td>
+            <td class="actions-column" (click)="$event.stopPropagation()">
+                <button class="btn-table-alterar"  nz-button nzType="default" [routerLink]="['../alterar', hash.encode(data.id)]"><i nz-icon nzType="edit"></i></button>
+                <button class="btn-table-excluir"  nz-button nzType="danger" (click)="delete(data)"><i nz-icon nzType="delete"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+</nz-card>

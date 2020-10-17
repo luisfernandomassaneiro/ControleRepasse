@@ -1,0 +1,96 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="Cesar.Silva" id="1.4.0-default_roles">
+        <insert tableName="perfil">
+            <column name="id">1</column>
+            <column name="nome">Administrador</column>
+            <column name="descricao">Perfil de gestão da aplicação. Este perfil tem permissão às funcionalidade de gerenciamento de perfis, permissões e usuário.</column>
+        </insert>
+        <insert tableName="perfil">
+            <column name="id">2</column>
+            <column name="nome">Usuário de Consulta</column>
+            <column name="descricao">Perfil de consulta, este usuário possui permissões somente leitura nas telas da aplicação.</column>
+        </insert>
+    </changeSet>
+
+    <changeSet author="Cesar.Silva" id="1.4.1-default_roles_permissions">
+
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">ListarPerfis</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">InserirPerfis</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">AlterarPerfis</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">ExcluirPerfis</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">GerenciarPerfis</column>
+        </insert>
+
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">ListarUsuario</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">InserirUsuario</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">AlterarUsuario</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">ExcluirUsuario</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">ManterAtivacao</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">1</column>
+            <column name="recurso">AssociarUsuarioPerfil</column>
+        </insert>
+
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">2</column>
+            <column name="recurso">ListarPerfis</column>
+        </insert>
+        <insert tableName="associacao_perfil_recurso">
+            <column name="perfil">2</column>
+            <column name="recurso">ListarUsuario</column>
+        </insert>
+
+    </changeSet>
+
+    <changeSet author="Cesar.Silva" id="1.4.2-default_user">
+
+        <insert tableName="usuario">
+            <column name="id">1</column>
+            <column name="username">admin</column>
+            <column name="nome">Administrador da Aplicação</column>
+            <column name="email">admin@senior.com.br</column>
+            <column name="password">$2a$10$qpsnQetAidPUkB8.P1/1QOCMwhzxxwK4/urkoskkM76MQPyCtvpJ.</column>
+            <column name="nascimento">2019-04-18</column>
+            <column name="sexo">M</column>
+            <column name="tipo">LOCAL</column>
+        </insert>
+
+        <insert tableName="associacao_usuario_perfil">
+            <column name="perfil">1</column>
+            <column name="usuario">1</column>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,45 @@
+<app-authentication-header description="authentication.login.header.message"></app-authentication-header>
+
+<form (submit)="login(form.value)" [formGroup]="form" nz-form nzLayout="vertical" role="form">
+
+  <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large" style="margin-bottom: 10px;">
+    <input formControlName="username" nz-input placeholder="{{'authentication.login.input.username' | translate}}">
+  </nz-input-group>
+  <ng-template #prefixTemplateUser><i nz-icon nzType="user"></i></ng-template>
+
+  <nz-input-group [nzPrefix]="prefixTemplateLock" nzSize="large">
+    <input formControlName="password" nz-input placeholder="{{'authentication.login.input.password' | translate}}"
+           type="password">
+  </nz-input-group>
+  <ng-template #prefixTemplateLock><i nz-icon nzType="lock"></i></ng-template>
+
+  <table style="width: 100%; margin-top: 15px;">
+    <tr>
+      <td>
+        <label [(ngModel)]="keeplogged" [ngModelOptions]="{standalone: true}"
+               nz-checkbox>{{'authentication.login.label.keep-logged'|translate}}</label>
+      </td>
+      <td style="text-align: right">
+        <a [routerLink]="'../recovery'" class="forgot"
+           style="text-decoration: underline; font-weight: bold; opacity: 0.8;">
+          {{ 'authentication.login.label.forgot-password' | translate }}
+        </a>
+      </td>
+    </tr>
+  </table>
+
+  <button class="primary-btn" nz-button nzBlock nzSize="large" nzType="primary" type="submit">
+    {{ 'authentication.login.button.login' | translate }}
+  </button>
+
+  <div style="margin-top: 10px; min-height: 20px">
+    <div *ngIf="valErr" style="text-align: center; color: red;">
+      <i nz-icon nzTheme="fill" nzType="warning" style="margin-right: 10px; font-weight: normal"></i>
+      <span style="font-weight: bold">{{valErr}}</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 10px; text-align: center">
+    <app-i18n-language-selection class="langs"></app-i18n-language-selection>
+  </div>
+</form>

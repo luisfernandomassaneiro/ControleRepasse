@@ -1,0 +1,42 @@
+.application-nav-wrap {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.application-nav {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.application-nav > li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.application-nav-item {
+  padding: 8px 2px;
+  line-height: 100%;
+  text-align: center;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 300ms;
+  min-width: unset;
+}
+
+.application-nav-item, .application-nav nz-badge {
+  color: #fff;
+}
+
+.application-nav-item > i, .application-nav-item-icon {
+  font-size: 18px !important;
+  transform: none !important;
+}
+
+.application-nav-item:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}

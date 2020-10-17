@@ -1,0 +1,15 @@
+.loader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.ant-spin-spinning {
+  max-height: unset !important;
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+}

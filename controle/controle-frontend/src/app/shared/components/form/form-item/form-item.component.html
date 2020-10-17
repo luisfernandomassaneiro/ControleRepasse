@@ -1,0 +1,12 @@
+<nz-form-item [ngClass]="formItemClass" class="mb5">
+  <nz-form-label *ngIf="label" [nzFor]="controlName" [nzRequired]="required" nzNoColon="true">
+    <span>{{label | translate}}</span>
+    <span *ngIf="explain" style="margin-left: 5px">
+      <i [nzTooltipTitle]="explain" nz-icon nz-tooltip nzTheme="outline" nzType="question-circle"></i>
+    </span>
+  </nz-form-label>
+  <nz-form-control>
+    <ng-content></ng-content>
+    <app-control-messages *ngIf="controlName" [control]="control"></app-control-messages>
+  </nz-form-control>
+</nz-form-item>

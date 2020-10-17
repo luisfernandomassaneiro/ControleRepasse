@@ -1,0 +1,62 @@
+image: openjdk:14
+
+stages:
+  - build
+  - deploy
+  - qa
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository -Djava.awt.headless=true"
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode --quiet -ff"
+
+cache:
+  key: "$CI_PROJECT_NAME"
+  paths:
+    - .m2/repository
+
+before_script:
+  - PROJECT_VERSION=${CI_COMMIT_SHA:0:7}
+  - chmod +x mvnw
+
+build:
+  stage: build
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS verify
+  artifacts:
+    paths:
+      - "./*/target/*"
+
+sonarqube:develop:
+  stage: qa
+  image: openjdk:11
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS sonar:sonar -Dsonar.host.url=$SONAR_URL -Drevision=$PROJECT_VERSION -Dsonar.projectName=unstable_$CI_PROJECT_NAME -Dsonar.projectVersion=$PROJECT_VERSION -Dsonar.projectKey=unstable_$CI_PROJECT_NAME
+  only:
+    - develop
+
+sonarqube:release:
+  stage: qa
+  image: openjdk:11
+  script:
+    - ./mvnw $MAVEN_CLI_OPTS sonar:sonar -Dsonar.host.url=$SONAR_URL -Drevision=$PROJECT_VERSION -Dsonar.projectName=release_$CI_PROJECT_NAME -Dsonar.projectVersion=$PROJECT_VERSION -Dsonar.projectKey=release_$CI_PROJECT_NAME
+  only:
+    - master
+
+docker:update:
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  stage: deploy
+  cache: {}
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"registry.gitlab.com\":{\"username\":\"$GITLAB_USER\",\"password\":\"$GITLAB_TOKEN\"}}}" > /kaniko/.docker/config.json
+    - IMAGE_TAG=registry.gitlab.com/$GITLAB_USER/docker-registry/$CI_PROJECT_NAME:$CI_COMMIT_REF_NAME
+    - echo "$IMAGE_TAG"
+    - /kaniko/executor --context $CI_PROJECT_DIR/controle.app --dockerfile $CI_PROJECT_DIR/controle.app/Dockerfile --destination $IMAGE_TAG
+  only:
+    - master
+    - staging
+    - develop

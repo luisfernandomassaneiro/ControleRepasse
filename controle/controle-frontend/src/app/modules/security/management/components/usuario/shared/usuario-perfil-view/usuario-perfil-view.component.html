@@ -1,0 +1,61 @@
+<nz-modal (nzOnCancel)="detail = null" [(nzVisible)]="!!detail"
+          [nzTitle]="'security.perfil.associacao.details.title' | translate">
+  <div *ngIf="detail">
+    <table style="width: 100%">
+      <tr>
+        <td style="font-weight: bold; text-align: right; padding-right: 5px;">
+          {{ 'security.usuario.field.nome' | translate }}:
+        </td>
+        <td>
+          {{ detail.usuario.nome }}
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold; text-align: right; padding-right: 5px;">
+          {{ 'security.usuario.field.username' | translate }}:
+        </td>
+        <td>
+          {{ detail.usuario.username }}
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold; text-align: right; padding-right: 5px;">
+          {{ 'security.usuario.field.email' | translate }}:
+        </td>
+        <td>
+          {{ detail.usuario.email }}
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold; text-align: right; padding-right: 5px;">
+          {{ 'security.perfil.field.usuario.status' | translate }}:
+        </td>
+        <td>
+          <app-boolean-display [value]="detail.usuario.active"></app-boolean-display>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold; text-align: right; padding-right: 5px;">
+          {{ 'security.perfil.field.name' | translate }}:
+        </td>
+        <td>
+          {{ detail.perfil.nome }}
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold; text-align: right; padding-right: 5px;">
+          {{ 'security.perfil.field.context' | translate }}
+        </td>
+        <td>
+          {{ detail.contexto?.nome }}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div *nzModalFooter>
+    <button (click)="delete(detail)" [permission]="resources.Security.AssociarUsuarioPerfil" nz-button nzType="danger">
+      {{'general.buttons.delete' | translate}}
+    </button>
+    <button (click)="detail = null" nz-button nzType="default">OK</button>
+  </div>
+</nz-modal>

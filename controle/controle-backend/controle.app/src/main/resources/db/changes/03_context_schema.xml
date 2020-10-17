@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Cesar.Silva (generated)" id="1558101414845-1">
+        <createTable tableName="contexto">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Cesar.Silva (generated)" id="1558101414845-2">
+        <addColumn tableName="associacao_usuario_perfil">
+            <column name="contexto" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Cesar.Silva (generated)" id="1558101414845-3">
+        <addPrimaryKey columnNames="id" constraintName="contextoPK" tableName="contexto"/>
+    </changeSet>
+    <changeSet author="Cesar.Silva (generated)" id="1558101414845-4">
+        <addForeignKeyConstraint baseColumnNames="contexto" baseTableName="associacao_usuario_perfil" constraintName="FK_CONT_ASUP" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="contexto"/>
+    </changeSet>
+</databaseChangeLog>

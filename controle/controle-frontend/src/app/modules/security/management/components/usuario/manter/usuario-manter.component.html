@@ -1,0 +1,12 @@
+<app-page-header
+  [breabcrumb]="breadcrumb"
+  [title]="title"></app-page-header>
+
+<nz-card>
+  <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+    <nz-tab [nzTitle]="'security.usuario.tab.personal.title' | translate">
+      <app-usuario-informacao-pessoal (save)="save($event)" [backLabel]="edicao ? 'general.buttons.finalize' : 'general.buttons.back'" [entity]="entity"
+                                      [profileEdition]="false"></app-usuario-informacao-pessoal>
+    </nz-tab>
+  </nz-tabset>
+</nz-card>

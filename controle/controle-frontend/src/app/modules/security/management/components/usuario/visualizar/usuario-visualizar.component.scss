@@ -1,0 +1,26 @@
+.associacao {
+  height: 75px;
+}
+
+.info {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  * {
+    display: block;
+    word-wrap: break-word;
+  }
+
+  float: left;
+  max-width: calc(100% - 75px);
+}
+
+.nome {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.descricao {
+  color: #999;
+}

@@ -1,0 +1,13 @@
+@import "../../variables";
+
+.btn-link {
+  color: $primary-color;
+  text-decoration: underline;
+  border: none;
+  padding: 0;
+  font-weight: $font-weight-medium;
+
+  span {
+    text-decoration: underline;
+  }
+}

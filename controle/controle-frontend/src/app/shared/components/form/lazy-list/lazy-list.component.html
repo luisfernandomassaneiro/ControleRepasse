@@ -1,0 +1,17 @@
+<nz-select
+  (ngModelChange)="update($event)"
+  (nzOnSearch)="onSearch($event)"
+  (nzScrollToBottom)="more()"
+  [(ngModel)]="item"
+  [compareWith]="compareWith ? compareWith : null"
+  [nzAllowClear]="nzAllowClear"
+  [nzDisabled]="nzDisabled"
+  [nzPlaceHolder]="nzPlaceHolder"
+  [nzServerSearch]="onServer"
+  [nzShowSearch]="nzShowSearch"
+  style="width: 100%;">
+  <nz-option *ngFor="let o of items" [nzLabel]="getLabel(o)" [nzValue]="o"></nz-option>
+  <nz-option *ngIf="isLoading" nzCustomContent nzDisabled>
+    <i class="loading-icon" nz-icon nzType="loading"></i> Carregando...
+  </nz-option>
+</nz-select>

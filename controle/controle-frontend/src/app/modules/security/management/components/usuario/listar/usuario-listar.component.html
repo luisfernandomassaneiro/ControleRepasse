@@ -1,0 +1,53 @@
+<app-page-header
+  [breabcrumb]="[{label: 'menu.home', route: '/'}, {label: 'menu.security.usuario'}]"
+  [title]="'security.usuario.list.title'"></app-page-header>
+<nz-card>
+
+  <app-usuario-filter [filtro]="filtro" [grid]="gridWrapper"></app-usuario-filter>
+
+  <hr/>
+
+  <app-list-buttons [link]="['../incluir']" ></app-list-buttons>
+
+  <div style="overflow-x: auto">
+    <nz-table
+      (nzPageIndexChange)="gridWrapper.refresh()"
+      (nzPageSizeChange)="gridWrapper.refresh()"
+      [(nzPageIndex)]="gridWrapper.pageIndex"
+      [(nzPageSize)]="gridWrapper.pageSize"
+      [nzData]="gridWrapper.dataset.itens"
+      [nzFrontPagination]="false"
+      [nzTotal]="gridWrapper.dataset.total"
+      nzShowSizeChanger>
+      <thead (nzSortOrderChange)="gridWrapper.sort($event)" *ngIf="gridWrapper.dataset.itens?.length">
+      <tr>
+        <th [nzSortOrder]="gridWrapper.direction('username')" class="hidden-xs" nzColumnKey="username"
+            nzShowSort>{{ 'security.usuario.field.username' | translate }}</th>
+        <th [nzSortOrder]="gridWrapper.direction('nome')" nzColumnKey="nome"
+            nzShowSort>{{ 'security.usuario.field.nome' | translate }}</th>
+        <th [nzSortOrder]="gridWrapper.direction('email')" class="hidden-xs" nzColumnKey="email"
+            nzShowSort>{{ 'security.usuario.field.email' | translate }}</th>
+        <th class="actions-column">{{ 'general.labels.actions' | translate }}</th>
+        <th [nzSortOrder]="gridWrapper.direction('active')" class="actions-column" nzColumnKey="active"
+            nzShowSort>{{ 'security.usuario.field.status' | translate }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr (click)="view(data)" *ngFor="let data of gridWrapper.dataset.itens" class="clickable">
+        <td class="hidden-xs">{{ data.username }}</td>
+        <td>{{ data.nome }}</td>
+        <td class="hidden-xs">{{ data.email }}</td>
+        <td (click)="$event.stopPropagation()" class="actions-column">
+          <button  [routerLink]="['../alterar', hash.encode(data.id)]" class="btn-table-alterar" nz-button
+                  nzType="default"><i nz-icon nzType="edit"></i></button>
+          <button (click)="delete(data);"  class="btn-table-excluir" nz-button
+                  nzType="danger"><i nz-icon nzType="delete"></i></button>
+        </td>
+        <td (click)="$event.stopPropagation()" class="center" style="width: 1px">
+          <nz-switch (ngModelChange)="changeStatus(data)" [(ngModel)]="data.active"></nz-switch>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</nz-card>

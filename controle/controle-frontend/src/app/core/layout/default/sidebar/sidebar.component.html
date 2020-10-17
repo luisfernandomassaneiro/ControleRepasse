@@ -1,0 +1,14 @@
+<div (mouseenter)="openMenu()" (mouseleave)="closeMenu()" class="application-aside-inner">
+
+  <div style="text-align: right; padding: 5px 5px 0 0; height: 29px">
+    <nz-switch (ngModelChange)="toggleCollapsedSidebar()" [ngModel]="fixed" [nzCheckedChildren]="checkedTemplate"
+               [nzUnCheckedChildren]="unCheckedTemplate" class="fixed-menu-switch hidden-sm"></nz-switch>
+    <ng-template #checkedTemplate><i nz-icon nzTheme="outline" nzType="pushpin"></i></ng-template>
+    <ng-template #unCheckedTemplate><i nz-icon nzTheme="outline" nzType="pushpin"></i></ng-template>
+  </div>
+
+  <div class="menu-item">
+    <app-sidebar-item (menuSelected)="onMenuSelect()" [items]="menu[0].children">
+    </app-sidebar-item>
+  </div>
+</div>

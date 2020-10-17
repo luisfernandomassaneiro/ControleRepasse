@@ -1,0 +1,27 @@
+<a (click)="show()" class="btn-link"
+   href="javascript:void(0)">{{ 'security.usuario.change_password.buttons.change' | translate }}</a>
+
+<nz-modal (nzOnCancel)="visible = false"
+          (nzOnOk)="update(form.value)"
+          [nzOkText]="'security.usuario.change_password.buttons.change' | translate"
+          [nzVisible]="visible">
+
+  <form [formGroup]="form" nz-form nzLayout="vertical">
+
+    <app-form-item [required]="true" controlName="senhaAtual" label="security.usuario.change_password.hint.current">
+      <input formControlName="senhaAtual" nz-input type="password"/>
+    </app-form-item>
+
+    <app-form-item [required]="true" controlName="novaSenha" label="security.usuario.change_password.hint.new">
+      <input formControlName="novaSenha" nz-input type="password"/>
+    </app-form-item>
+
+    <app-form-item [required]="true" controlName="passwordConfirm"
+                   label="security.usuario.change_password.hint.confirmation">
+      <input formControlName="passwordConfirm" nz-input type="password"/>
+    </app-form-item>
+
+  </form>
+
+</nz-modal>
+

@@ -1,0 +1,58 @@
+@import "variables";
+
+.mb5 {
+  margin-bottom: 5px !important;
+}
+
+.mb0 {
+  margin-bottom: 0 !important;
+}
+
+.pb0 {
+  padding-bottom: 0 !important;
+}
+
+.hidden-xs {
+  @media (max-width: $screen-xs-max) {
+    display: none !important;
+  }
+}
+
+.hidden-sm {
+  @media (max-width: $screen-sm-max) {
+    display: none !important;
+  }
+}
+
+.xs-only {
+  @media (min-width: $screen-sm-min) {
+    display: none !important;
+  }
+}
+
+.sm-only {
+  @media (min-width: $screen-md-min) {
+    display: none !important;
+  }
+}
+
+.center {
+  text-align: center !important;
+}
+
+.right {
+  text-align: right !important;
+}
+
+.px-sm {
+  padding-right: 8px !important;
+  padding-left: 8px !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}

@@ -1,0 +1,9 @@
+<div class="login-header">
+<!--  <img alt="Logo da aplicação" class="logo" src="./assets/img/brand/logo-full-alt.svg">-->
+  <h1 *ngIf="title" style="padding-top: 20px; padding-bottom: 10px;">
+    {{title | translate}}
+  </h1>
+  <div *ngIf="description" class="description">
+    {{description | translate}}
+  </div>
+</div>

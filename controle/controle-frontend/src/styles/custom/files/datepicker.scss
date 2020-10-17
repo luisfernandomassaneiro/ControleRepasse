@@ -1,0 +1,30 @@
+.date-picker-overlay {
+  min-width: unset !important;
+  width: 252px !important;
+  overflow: hidden !important;
+  margin-top: 0 !important;
+}
+
+.cdk-overlay-pane {
+  min-width: unset !important;
+}
+
+.custom-input-picker {
+
+  margin-top: 34px;
+  margin-bottom: 34px;
+
+  .ant-calendar-input-wrap {
+    display: none;
+  }
+}
+
+.custom-date-input {
+  input {
+    z-index: 1051;
+  }
+
+  .ant-input-suffix {
+    z-index: 1052;
+  }
+}

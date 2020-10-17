@@ -1,0 +1,12 @@
+<div *ngIf="show == null">
+  <button (click)="toggle()" nz-button nzType="primary" style="float: right;"><i nz-icon nzType="filter"></i></button>
+  <br><br>
+</div>
+<div *ngIf="visible || show" [@slideInOut]>
+  <ng-content></ng-content>
+
+  <button (click)="search.next()" [nzType]="'primary'" class="filter-button"
+          nz-button>{{ 'general.buttons.search' | translate }}</button>
+  <button (click)="clear.next()" [nzType]="'danger'" class="filter-button"
+          nz-button>{{ 'general.buttons.clear' | translate }}</button>
+</div>

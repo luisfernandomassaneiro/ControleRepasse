@@ -1,0 +1,65 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="Nando (generated)" id="1602964518698-1">
+        <createTable tableName="anexo">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="anexoPK"/>
+            </column>
+            <column name="file" type="LONGBLOB"/>
+            <column name="file_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mime_type" type="VARCHAR(255)"/>
+            <column name="carro_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-2">
+        <createTable tableName="carro">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="carroPK"/>
+            </column>
+            <column name="comprador" type="VARCHAR(255)"/>
+            <column name="data" type="date"/>
+            <column name="descricao" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="placa" type="VARCHAR(255)"/>
+            <column name="renavam" type="VARCHAR(255)"/>
+            <column name="valor_compra" type="DECIMAL(19, 2)"/>
+            <column name="valor_venda" type="DECIMAL(19, 2)"/>
+            <column name="vendedor" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-3">
+        <addForeignKeyConstraint baseColumnNames="carro_id" baseTableName="anexo" constraintName="FKbefnsmws78vjop0ta7cj8a5jt" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="carro" validate="true"/>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-4">
+        <dropForeignKeyConstraint baseTableName="associacao_usuario_perfil" constraintName="FK_CONT_ASUP"/>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-5">
+        <dropForeignKeyConstraint baseTableName="associacao_perfil_recurso" constraintName="FK_PERF_ASPR"/>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-6">
+        <dropForeignKeyConstraint baseTableName="associacao_usuario_perfil" constraintName="FK_PERF_ASUP"/>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-7">
+        <dropForeignKeyConstraint baseTableName="associacao_usuario_perfil" constraintName="FK_USUA_ASUP"/>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-8">
+        <dropUniqueConstraint constraintName="UC_PERFILNOME_COL" tableName="perfil"/>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-9">
+        <dropTable tableName="associacao_perfil_recurso"/>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-10">
+        <dropTable tableName="associacao_usuario_perfil"/>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-11">
+        <dropTable tableName="contexto"/>
+    </changeSet>
+    <changeSet author="Nando (generated)" id="1602964518698-12">
+        <dropTable tableName="perfil"/>
+    </changeSet>
+</databaseChangeLog>

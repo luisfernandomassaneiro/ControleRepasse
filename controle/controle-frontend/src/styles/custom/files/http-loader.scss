@@ -1,0 +1,13 @@
+.http-loader {
+  z-index: 10000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  .ant-spin {
+    max-height: unset !important;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+}

@@ -1,0 +1,37 @@
+@import "../../../../styles/variables";
+
+.application-content-title {
+  display: block;
+  margin: 0 0 20px;
+  padding: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fafbfc;
+  border-bottom: 1px solid #efe3e5;
+
+  h1 {
+    margin-bottom: 0;
+    font-weight: $font-weight-medium;
+    font-size: 18px;
+  }
+
+  .ant-breadcrumb {
+    font-size: 12px;
+
+    .ant-breadcrumb-separator {
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .application-content-title {
+    margin: 0;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .application-content-title {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .07), 0 2px 10px 0 rgba(0, 0, 0, .07);
+  }
+}

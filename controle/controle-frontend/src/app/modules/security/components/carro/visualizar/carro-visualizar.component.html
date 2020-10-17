@@ -1,0 +1,47 @@
+<app-page-header
+  [title]="'security.carro.view.title'"
+  [breabcrumb]="breadcrumb"></app-page-header>
+
+<nz-card>
+  <div nz-row nzGutter="16">
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+      <label class='page-view-label'>{{ 'security.carro.field.descricao' | translate }}</label>
+      <p class='page-view-value'>{{ entity.descricao }}</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+      <label class='page-view-label'>{{ 'security.carro.field.placa' | translate }}</label>
+      <p class='page-view-value'>{{ entity.placa }}</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+      <label class='page-view-label'>{{ 'security.carro.field.renavam' | translate }}</label>
+      <p class='page-view-value'>{{ entity.renavam }}</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+      <label class='page-view-label'>{{ 'security.carro.field.vendedor' | translate }}</label>
+      <p class='page-view-value'>{{ entity.vendedor }}</p>
+    </div>
+  </div>
+  <div nz-row nzGutter="16">
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+      <label class='page-view-label'>{{ 'security.carro.field.comprador' | translate }}</label>
+      <p class='page-view-value pb0'>{{ entity.comprador }}</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+      <label class='page-view-label'>{{ 'security.carro.field.valorcompra' | translate }}</label>
+      <p class='page-view-value pb0'>{{ entity.valorCompra }}</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+      <label class='page-view-label'>{{ 'security.carro.field.valorvenda' | translate }}</label>
+      <p class='page-view-value pb0'>{{ entity.valorVenda }}</p>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+      <label class='page-view-label'>{{ 'security.carro.field.data' | translate }}</label>
+      <p class='page-view-value pb0'>{{ entity.data | date: ('general.formats.date'| translate)}}</p>
+    </div>
+  </div>
+  <div class="actions">
+    <button nz-button class="btn-excluir" nzType="danger" (click)="delete(this.entity)">{{ 'general.buttons.delete' | translate }}</button>
+    <button nz-button class="btn-alterar" nzType="primary" [routerLink]="['../../alterar', hash.encode(entity.id)]">{{ 'general.buttons.edit' | translate }}</button>
+    <button nz-button class="btn-voltar" nzType="default" [routerLink]="['../../']">{{ 'general.buttons.back' | translate }}</button>
+  </div>
+</nz-card>

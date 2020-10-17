@@ -1,0 +1,25 @@
+<!--<div class="application-default__header-logo" style="width: auto; margin-right: 30px">
+  <a [routerLink]="['/']" class="application-default__header-logo-link">
+    <img alt="Logo da Aplicação" class="application-default__header-logo" src="./assets/img/brand/logo-full.svg"
+         style="max-height:40px; width: unset; height: unset; margin-left: 10px;"/>
+  </a>
+</div>-->
+
+<div class="application-nav-wrap">
+
+  <ul class="application-nav">
+    <!-- Menu -->
+    <li>
+      <div (click)="toggleCollapsedSidebar()" class="application-nav-item sm-only">
+        <i nz-icon nzType="menu-{{settings.layout.navbar.collapsed ? 'unfold' : 'fold'}}"></i>
+      </div>
+    </li>
+  </ul>
+
+  <ul class="application-nav">
+    <!--dexter-notification-header-->
+    <li>
+      <header-user></header-user>
+    </li>
+  </ul>
+</div>

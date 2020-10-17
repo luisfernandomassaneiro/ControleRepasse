@@ -1,0 +1,18 @@
+<div class="small-bg"></div>
+<div class="wrapper">
+  <nz-result [nzStatus]="code" nzSubTitle="{{description | translate}}"
+             nzTitle="{{title | translate}}">
+    <div nz-result-extra style="margin: 0">
+      <span [innerHTML]="guid"></span>
+      <div *ngFor="let des of messages">
+        {{messages}}
+      </div>
+    </div>
+  </nz-result>
+
+  <div class="center" style="padding-bottom: 30px">
+    <button *ngIf="redirect" [routerLink]="['/']" class="ant-btn ant-btn-primary" nz-button>
+      <span>Voltar para página inicial</span>
+    </button>
+  </div>
+</div>

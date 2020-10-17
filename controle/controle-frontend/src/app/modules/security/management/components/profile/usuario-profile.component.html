@@ -1,0 +1,15 @@
+<app-page-header
+  [breabcrumb]="[{ label: 'menu.home', route: '/' }, {label: 'security.usuario.label.account_management'}]"
+  [title]="'security.usuario.label.account_management'"></app-page-header>
+
+<nz-card>
+  <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+    <nz-tab [nzTitle]="'security.usuario.tab.personal.title' | translate">
+      <app-usuario-informacao-pessoal (save)="save($event)" [backLabel]="'general.buttons.finalize'" [entity]="entity"
+                                      [profileEdition]="true"></app-usuario-informacao-pessoal>
+    </nz-tab>
+    <nz-tab [nzTitle]="'security.usuario.tab.config.title' | translate">
+      <app-alterar-senha *ngIf="entity.tipoUsuario === 'LOCAL'"></app-alterar-senha>
+    </nz-tab>
+  </nz-tabset>
+</nz-card>

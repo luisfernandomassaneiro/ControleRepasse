@@ -1,0 +1,56 @@
+<app-page-header [title]="title" [breabcrumb]="breadcrumb"></app-page-header>
+
+<nz-card>
+  <form nz-form [formGroup]="form" nzLayout="vertical">
+      <div nz-row nzGutter="16">
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+              <app-form-item label="security.carro.field.descricao" controlName="descricao" [required]="true">
+                  <input nz-input type="text" formControlName='descricao' [maxLength]='255'/>
+              </app-form-item>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+              <app-form-item label="security.carro.field.placa" controlName="placa">
+                  <input nz-input type="text" formControlName='placa' [maxLength]='255'/>
+              </app-form-item>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+              <app-form-item label="security.carro.field.renavam" controlName="renavam">
+                  <input nz-input type="text" formControlName='renavam' [maxLength]='255'/>
+              </app-form-item>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+              <app-form-item label="security.carro.field.vendedor" controlName="vendedor">
+                  <input nz-input type="text" formControlName='vendedor' [maxLength]='255'/>
+              </app-form-item>
+          </div>
+      </div>
+      <div nz-row nzGutter="16">
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+              <app-form-item label="security.carro.field.comprador" controlName="comprador">
+                  <input nz-input type="text" formControlName='comprador' [maxLength]='255'/>
+              </app-form-item>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+              <app-form-item label="security.carro.field.valorcompra" controlName="valorCompra">
+                <input currencyMask nz-input type="text" formControlName='valorCompra'
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" />
+              </app-form-item>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+              <app-form-item label="security.carro.field.valorvenda" controlName="valorVenda">
+                <input currencyMask nz-input type="text" formControlName='valorVenda'
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" />
+              </app-form-item>
+          </div>
+          <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
+              <app-form-item label="security.carro.field.data" controlName="data">
+                  <app-date-picker formControlName='data'></app-date-picker>
+              </app-form-item>
+          </div>
+      </div>
+      <div class="actions">
+          <button nz-button class="btn-salvar" nzType="primary" (click)="save(form.value)">{{ 'general.buttons.save' | translate }}</button>
+          <button nz-button class="btn-voltar" nzType="default" (click)="back()">{{ 'general.buttons.back' | translate }}</button>
+      </div>
+  </form>
+</nz-card>

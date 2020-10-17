@@ -1,0 +1,115 @@
+@import "../../variables";
+
+.application-aside-inner {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-scroll-chaining: chained;
+  -ms-overflow-style: none;
+  -ms-content-zooming: zoom;
+  -ms-scroll-rails: none;
+  -ms-content-zoom-limit-min: 100%;
+  -ms-content-zoom-limit-max: 500%;
+  -ms-scroll-snap-type: proximity;
+  -ms-scroll-snap-points-x: snaplist(100%, 200%, 300%, 400%, 500%);
+  scrollbar-width: none;
+}
+
+.application-aside {
+  width: 220px;
+  position: fixed;
+  margin-top: 70px;
+  top: 0;
+  bottom: 0;
+  z-index: 14;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: width 0.2s cubic-bezier(0.25, 0, 0.15, 1), translate 0.2s cubic-bezier(0.25, 0, 0.15, 1);
+  -webkit-overflow-scrolling: touch;
+
+  background-color: $menu-backgroud-color;
+
+  .sidebar-nav__selected {
+    background-color: $menu-backgroud-color;
+  }
+
+  .sidebar-nav__item-link:hover {
+    background-color: $menu-hover-backgroud-color;
+  }
+
+  .sidebar-nav__item-link {
+    color: $menu-font-color;
+  }
+
+  .sidebar-nav__sub-arrow::before, .sidebar-nav__sub-arrow::after {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+  }
+
+  .sidebar-nav__item-icon {
+    min-width: 14px;
+    margin-right: 8px;
+    transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+}
+
+.application-aside::after {
+  border-right: none;
+}
+
+.sidebar-nav__item {
+  border-left: 3px solid transparent !important;
+}
+
+.sidebar-nav__item-icon {
+  display: inline-block !important;
+}
+
+.sidebar-nav__item-link {
+  display: block !important;
+  padding: 8px 14px;
+}
+
+.application-collapsed {
+  .application-aside {
+    width: 50px;
+  }
+
+  .sidebar-nav__item-link {
+    padding-left: 14px !important;
+  }
+
+  .fixed-menu-switch {
+    display: none;
+  }
+
+  .ant-menu:not(.ant-menu-root),
+  .sidebar-nav__item-text,
+  .ant-menu-submenu-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .application-collapsed .application-aside {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  .application-aside, .application-content {
+    transition: transform .3s ease;
+  }
+
+  .application:not(.application-collapsed) .menu-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 13;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: rgba(0, 0, 0, .3);
+    -webkit-animation: opacity .25s;
+    animation: opacity .25s;
+  }
+}

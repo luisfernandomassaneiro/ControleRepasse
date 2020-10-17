@@ -1,0 +1,71 @@
+@import "../../variables";
+
+body {
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #f5f7fa;
+}
+
+a {
+  color: $primary-color;
+}
+
+.preloader {
+  background-color: $primary-color !important;
+}
+
+.application-content {
+  margin: 0 24px 24px 24px;
+  padding-top: 70px;
+}
+
+@media (min-width: $screen-md-min) {
+  .application:not(.application-fixed) {
+    .application-content {
+      margin-left: 75px !important;
+    }
+  }
+
+  .application-content {
+    margin-left: 244px;
+  }
+
+  .application-collapsed .sidebar-nav:not(.sidebar-nav__sub) .sidebar-nav__item-link {
+    padding: 0 0 10px;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .application-content {
+    margin: 0;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .application-content {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.actions {
+  margin-top: 35px;
+}
+
+@media (min-width: $screen-md-min) {
+  .actions .ant-btn, .action-btn {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ CSS */
+  img {
+    width: 100% !important;
+    height: 100%;
+  }
+}
+
+.ant-btn + .ant-btn, .ant-btn + nz-popconfirm, nz-popconfirm + .ant-btn, nz-popconfirm + nz-popconfirm, .ant-btn + nz-button-group, nz-button-group + .ant-btn, .ant-btn + nz-dropdown, nz-dropdown + .ant-btn, nz-popconfirm + nz-button-group, nz-button-group + nz-popconfirm {
+  margin-left: 8px;
+}

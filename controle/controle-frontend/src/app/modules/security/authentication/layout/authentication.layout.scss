@@ -1,0 +1,72 @@
+@import "../../../../../styles/variables";
+
+.sign-in {
+  h1 {
+    color: $primary-color;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold
+  }
+
+  .login-header {
+    img {
+      width: 100%;
+      max-height: 75px;
+    }
+
+    .description {
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    margin-bottom: 20px;
+  }
+
+  .primary-btn {
+    margin-top: 50px;
+  }
+
+  .login-wrapper {
+    background-color: white;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 60px;
+      border: 1px solid #c8ced3;
+      border-radius: 0.25rem;
+      max-width: 460px;
+      margin: auto;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translateY(-50%) translateX(-50%);
+      transform: translateY(-50%) translateX(-50%);
+    }
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      left: 30%;
+      -webkit-transform: translateY(-50%) translateX(-20%);
+      transform: translateY(-50%) translateX(-20%);
+    }
+
+    @media (max-width: $screen-xs-max) {
+      padding: 0 30px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .small-bg {
+      background-color: white;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}

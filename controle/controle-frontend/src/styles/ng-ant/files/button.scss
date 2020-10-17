@@ -1,0 +1,9 @@
+@import "../../variables";
+
+.ant-btn {
+  font-weight: $font-weight-medium;
+}
+
+.ant-btn > i + span, .ant-btn > span + i {
+  margin-left: 8px;
+}
