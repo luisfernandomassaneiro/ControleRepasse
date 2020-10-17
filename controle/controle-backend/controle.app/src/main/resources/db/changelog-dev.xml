@@ -7,5 +7,6 @@
     <include file="changes/01_security_schema.xml" relativeToChangelogFile="true"/>
     <include file="changes/02_initial_security_data.xml" relativeToChangelogFile="true"/>
     <include file="changes/03_context_schema.xml" relativeToChangelogFile="true"/>
+    <include file="changes/20201017195510_changelog.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

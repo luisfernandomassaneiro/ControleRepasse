@@ -72,6 +72,7 @@ import { JoinPipe } from './pipes/join.pipe';
 import { LazyListComponent } from '@shared/components/form/lazy-list/lazy-list.component';
 import { CharacterCounterComponent } from './components/form/character-counter.component';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 const ZORROMODULES = [
   NzButtonModule,
@@ -125,6 +126,7 @@ const ZORROMODULES = [
 
 const THIRDMODULES = [
   TextMaskModule,
+  CurrencyMaskModule
 ];
 // #endregion
 

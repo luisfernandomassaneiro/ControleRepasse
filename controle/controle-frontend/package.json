@@ -37,6 +37,7 @@
     "moment": "^2.26.0",
     "ng-http-loader": "^7.0.0",
     "ng-zorro-antd": "^9.1.2",
+    "ng2-currency-mask": "^9.0.2",
     "ngx-mask": "^9.1.2",
     "prettier": "^1.19.1",
     "prettier-stylelint": "^0.4.2",
