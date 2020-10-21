@@ -11,7 +11,7 @@ import { ExceptionInitComponent } from '@shared/components/error/init.component'
 
 export const routes: Routes = [ {
   path : '',
-  redirectTo : 'home',
+  redirectTo : 'security/carro',
   pathMatch : 'full'
 }, {
   path : 'auth',

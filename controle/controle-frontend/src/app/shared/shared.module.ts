@@ -121,7 +121,7 @@ const ZORROMODULES = [
   NzSpinModule,
   NzDividerModule,
   NzDropDownModule,
-  NzBreadCrumbModule,
+  NzBreadCrumbModule
 ];
 
 const THIRDMODULES = [

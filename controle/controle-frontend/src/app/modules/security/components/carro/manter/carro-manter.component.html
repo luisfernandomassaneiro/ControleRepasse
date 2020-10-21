@@ -48,6 +48,28 @@
               </app-form-item>
           </div>
       </div>
+      <nz-collapse>
+        <nz-collapse-panel nzHeader="Imagens" (nzActiveChange)="buscaImagens($event)">
+            <div class="clearfix">
+                <nz-upload
+                    [nzBeforeUpload]="beforeUpload"
+                    nzListType="picture-card"
+                    [(nzFileList)]="fileList"
+                    [nzShowButton]="fileList.length < 8"
+                    [nzPreview]="handlePreview">
+                    <div>
+                    <i nz-icon nzType="plus"></i>
+                    <div style="margin-top: 8px">Anexar</div>
+                    </div>
+                </nz-upload>
+                <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible = false">
+                    <ng-template #modalContent>
+                    <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+                    </ng-template>
+                </nz-modal>
+            </div>
+        </nz-collapse-panel>
+      </nz-collapse>
       <div class="actions">
           <button nz-button class="btn-salvar" nzType="primary" (click)="save(form.value)">{{ 'general.buttons.save' | translate }}</button>
           <button nz-button class="btn-voltar" nzType="default" (click)="back()">{{ 'general.buttons.back' | translate }}</button>

@@ -1,3 +1,4 @@
+import { NzUploadFile } from 'ng-zorro-antd';
 
 export class CarroModel {
   id: number;

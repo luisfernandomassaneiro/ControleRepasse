@@ -25,4 +25,5 @@ export class CarroService extends CrudService<CarroResumoModel> implements Resol
   resolve(route: ActivatedRouteSnapshot): Observable<CarroModel> {
     return this.get(this.hash.decode(route.params.id));
   }
+
 }
