@@ -28,7 +28,7 @@ export class CarroListarComponent {
   }
 
   view(item: CarroResumoModel): void {
-    this.router.navigate(['../visualizar', this.hash.encode(item.id)], {relativeTo: this.route});
+    this.router.navigate(['../alterar', this.hash.encode(item.id)], {relativeTo: this.route});
   }
 
   report(type: ReportTypeEnum): void {

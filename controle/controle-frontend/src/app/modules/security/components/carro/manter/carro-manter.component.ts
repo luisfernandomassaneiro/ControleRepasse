@@ -5,14 +5,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ReactiveFormsUtils } from '@shared/utils/reactive-forms.utils';
 import { ComparatorUtils } from '@shared/utils/comparator.utils';
 import { BreadCrumbItem } from '@shared/components/layout/page-header.component';
-import { ValidationService } from '@shared/services/validation.service';
 import { CarroService } from '../../../services/carro.service';
 import { CarroModel } from '../../../models/carro.model';
 import { HashService } from '@shared/services/hash.service';
-import { NzUploadFile } from 'ng-zorro-antd';
+import { NzModalService, NzUploadFile } from 'ng-zorro-antd';
 import { AnexoService } from 'app/modules/security/services/anexo.service';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Observable, Observer, Subject } from 'rxjs';
+import { MessagesService, NotificationType } from '@shared/services/message.service';
 
 @Component({
   templateUrl: './carro-manter.component.html'
@@ -36,7 +36,9 @@ export class CarroManterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private hash: HashService,
-    private anexoService: AnexoService
+    private anexoService: AnexoService,
+    private modal: NzModalService,
+    private message: MessagesService
 ) {}
 
   ngOnInit(): void {
@@ -89,8 +91,63 @@ export class CarroManterComponent implements OnInit {
 
   beforeUpload = (file: File): boolean => {
     this.uploadFile(file);
+    this.message.notify('Imagem incluída com sucesso!', NotificationType.Success);
     return false;
   }
+
+  nzRemove = (file: NzUploadFile) => {
+    return new Observable((observer: Observer<boolean>) => {
+      this.confirm().then(retorno => {
+        if (retorno) {
+          this.anexoService.delete(Number(file.uid)).subscribe(() => {})
+          this.message.notify('Imagem excluída com sucesso!', NotificationType.Success);
+          observer.next(true);
+          observer.complete();
+        } else {
+          observer.next(false);
+          observer.complete();
+        }
+      })
+    });
+  };
+/*
+  nzRemove = (file: NzUploadFile): boolean => {
+    this.modal.confirm({
+      nzTitle: 'Tem certeza que deseja excluir essa imagem?',
+      nzContent: '<b style="color: red;">Essa operação não poderá ser desfeita</b>',
+      nzOkText: 'Sim',
+      nzOkType: 'danger',
+      nzOnOk: () => {
+        this.anexoService.delete(Number(file.uid)).subscribe(() => {})
+        return true;
+      },
+      nzCancelText: 'Não',
+      nzOnCancel: () => {
+        return false;
+      }
+    });
+  }
+*/
+
+public confirm(): Promise<boolean> {
+  return new Promise((resolve) => {
+    const ref = this.modal.confirm({
+      nzTitle: 'Tem certeza que deseja excluir essa imagem?',
+      nzContent: '<b style="color: red;">Essa operação não poderá ser desfeita</b>',
+      nzOkText: 'Sim',
+      nzOkType: 'danger',
+      nzCancelText: 'Não',
+      nzOnOk: () => new Promise(() => {
+        resolve(true);
+        ref.close();
+      }),
+      nzOnCancel: () => new Promise(() => {
+        resolve(false);
+        ref.close();
+      }),
+    });
+  });
+}
 
   uploadFile(arquivo: File) {
     const formData = new FormData();

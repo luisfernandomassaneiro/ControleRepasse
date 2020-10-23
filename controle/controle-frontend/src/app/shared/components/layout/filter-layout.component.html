@@ -1,10 +1,8 @@
 <form (ngSubmit)="grid.refresh(true)" class="filter-layout" nz-form nzLayout="vertical">
 
+  <ng-content></ng-content>
+
   <div nz-row>
-    <div [nzMd]="container" nz-col>
-      <ng-content></ng-content>
-    </div>
-    <div [nzMd]="24 - container" class="hidden-xs" nz-col>
       <nz-form-item class="mb5 action-buttons">
         <nz-form-label [nzNoColon]="true" class="hidden-sm">&nbsp;</nz-form-label>
         <nz-form-control>
@@ -15,7 +13,6 @@
              style="margin: 0">{{ 'general.buttons.clear' | translate }}</a>
         </nz-form-control>
       </nz-form-item>
-    </div>
   </div>
 
   <div class="advanced-filters">

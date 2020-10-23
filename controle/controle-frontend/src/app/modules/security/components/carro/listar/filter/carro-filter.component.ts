@@ -18,4 +18,11 @@ export class CarroFilterComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  onChange(result: Date[]): void {
+    if (result && result.length > 1 && this.filtro) {
+      this.filtro.dataInicial = result[0];
+      this.filtro.dataFinal = result[1];
+    }
+  }
 }

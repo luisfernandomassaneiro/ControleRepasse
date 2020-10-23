@@ -31,13 +31,21 @@ public class UcListarCarro extends QueryPaginada<ListaPaginada<CarroResumoDto>> 
     private String comprador;
     private BigDecimal valorCompra;
     private BigDecimal valorVenda;
-    private LocalDate data;
+    private String[] data;
+    private LocalDate dataInicial;
+    private LocalDate dataFinal;
 
     @Override
     protected ListaPaginada<CarroResumoDto> execute() {
 
         BooleanBuilder filtro = new BooleanBuilder();
 	    filtro.and(nullSafeContainsIgnoreCase(carro.descricao, descricao));
+        filtro.and(nullSafeContainsIgnoreCase(carro.placa, placa));
+        filtro.and(nullSafeContainsIgnoreCase(carro.renavam, renavam));
+        filtro.and(nullSafeContainsIgnoreCase(carro.vendedor, vendedor));
+        filtro.and(nullSafeContainsIgnoreCase(carro.comprador, comprador));
+        filtro.and(nullSafeEq(carro.valorCompra, valorCompra));
+        filtro.and(nullSafeEq(carro.valorVenda, valorVenda));
 
         Page<Carro> page = repository.findAll(filtro, getPage());
         return new ListaPaginada<>(page.getTotalElements(), page.getTotalPages(),

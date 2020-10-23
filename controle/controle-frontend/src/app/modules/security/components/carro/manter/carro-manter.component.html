@@ -56,7 +56,9 @@
                     nzListType="picture-card"
                     [(nzFileList)]="fileList"
                     [nzShowButton]="fileList.length < 8"
-                    [nzPreview]="handlePreview">
+                    [nzPreview]="handlePreview"
+                    [nzRemove]="nzRemove"
+                    >
                     <div>
                     <i nz-icon nzType="plus"></i>
                     <div style="margin-top: 8px">Anexar</div>

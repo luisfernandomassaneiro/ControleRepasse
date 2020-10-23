@@ -1,6 +1,7 @@
 package br.com.senior.controle.external.api.security.dominio;
 
 import br.com.senior.controle.business.application.security.dto.AnexoDto;
+import br.com.senior.controle.business.application.security.usecase.carro.UcExcluirAnexo;
 import br.com.senior.controle.business.application.security.usecase.carro.UcIncluirAnexo;
 import br.com.senior.controle.business.application.security.usecase.carro.UcObterAnexo;
 import br.com.senior.controle.business.application.security.usecase.carro.UcObterImagensCarro;
@@ -52,6 +53,11 @@ public class AnexoController {
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(anexoDto.getMimeType()))
                 .body(new InMemoryResource(anexoDto.getFile()));
+    }
+
+    @DeleteMapping("{id}")
+    public void excluir(@PathVariable Long id) {
+        facade.execute(new UcExcluirAnexo().withId(id));
     }
 
 }
