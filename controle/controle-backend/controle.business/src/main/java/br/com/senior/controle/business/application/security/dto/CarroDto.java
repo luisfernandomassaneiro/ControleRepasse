@@ -3,6 +3,7 @@ package br.com.senior.controle.business.application.security.dto;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class CarroDto {
@@ -14,5 +15,5 @@ public class CarroDto {
     private String comprador;
     private BigDecimal valorCompra;
     private BigDecimal valorVenda;
-    private LocalDate data;
+    private Date data;
 }

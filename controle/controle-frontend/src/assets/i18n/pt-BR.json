@@ -177,6 +177,12 @@
     "carro.field.comprador" : "Comprador",
     "carro.field.valorcompra" : "Valor Compra",
     "carro.field.valorvenda" : "Valor Venda",
-    "carro.field.data" : "Data"
+    "carro.field.data" : "Data",
+    "carro.field.dataInicial" : "Data Inicial",
+    "carro.field.dataFinal" : "Data Final",
+    "carro.field.totalCompra" : "Total Compra",
+    "carro.field.totalVenda" : "Total Venda",
+    "carro.field.totalLucro" : "Total Lucro",
+    "carro.faturamento.title" : "Faturamento"
   }
 }

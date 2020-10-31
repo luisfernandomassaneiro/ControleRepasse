@@ -2,6 +2,7 @@ package br.com.senior.controle.business.application.security.usecase.carro;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import br.com.senior.controle.lib.business.application.validation.ValidString;
 
@@ -14,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -30,11 +33,12 @@ public class UcAlterarCarro extends IdentifiedUseCase<CarroDto, Long> {
     private String comprador;
     private BigDecimal valorCompra;
     private BigDecimal valorVenda;
-    private LocalDate data;
+    private Date data;
     @Override
     protected CarroDto execute() {
         Carro entity = repository.require(getId());
         map(CarroMapper.class).updateCarro(this, entity);
+        entity.setData(DateUtils.addSeconds(DateUtils.truncate(DateUtils.addDays(data, 1),  Calendar.DATE), -1));
         repository.save(entity);
         return map(CarroMapper.class).toCarroDto(entity);
     }

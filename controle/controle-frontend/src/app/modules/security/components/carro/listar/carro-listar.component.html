@@ -32,13 +32,21 @@
             <th>{{ 'security.carro.field.vendedor' | translate }}</th>
             <th>{{ 'security.carro.field.comprador' | translate }}</th>
             <th>{{ 'security.carro.field.vendedor' | translate }}</th>
-            <th>{{ 'security.carro.field.comprador' | translate }}</th>
+            <th>{{ 'security.carro.field.placa' | translate }}</th>
+            <th>{{ 'security.carro.field.renavam' | translate }}</th>
             <th class="center">{{ 'general.labels.actions' | translate }}</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let data of gridWrapper.dataset.itens" class="clickable" (click)="view(data)">
+            <td>{{ data.data | date: 'dd/MM/yyyy' }}
             <td>{{ data.descricao }}</td>
+            <td>{{ data.valorCompra | currency:'BRL':true:'1.2-2' }}
+            <td>{{ data.valorVenda | currency:'BRL':true:'1.2-2' }}
+            <td>{{ data.comprador }}</td>
+            <td>{{ data.vendedor }}</td>
+            <td>{{ data.placa }}</td>
+            <td>{{ data.renavam }}</td>
             <td class="actions-column" (click)="$event.stopPropagation()">
                 <button class="btn-table-alterar"  nz-button nzType="default" [routerLink]="['../alterar', hash.encode(data.id)]"><i nz-icon nzType="edit"></i></button>
                 <button class="btn-table-excluir"  nz-button nzType="danger" (click)="delete(data)"><i nz-icon nzType="delete"></i></button>
@@ -47,4 +55,31 @@
         </tbody>
       </nz-table>
     </div>
+    <nz-collapse [nzBordered]="true">
+      <nz-collapse-panel [nzHeader]="'security.carro.faturamento.title' | translate" [nzActive]="true" [nzExtra]="extraTpl">
+        <div nz-row nzGutter="16">
+          <div nz-col [nzSpan]="12" [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="8" style="padding:30px; text-align: center;">
+            <nz-card class="gradiente" [nzLoading]="loading">
+              <p class="xx-large">{{totais.totalCompra | currency:'BRL':true:'1.2-2'}}</p>
+              <p class="large">{{ 'security.carro.field.totalCompra' | translate }}</p>
+            </nz-card>
+          </div>
+          <div nz-col [nzSpan]="12" [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="8" style="padding:30px; text-align: center;">
+            <nz-card class="gradiente" [nzLoading]="loading">
+              <p class="xx-large">{{totais.totalVenda | currency:'BRL':true:'1.2-2'}}</p>
+              <p class="large">{{ 'security.carro.field.totalVenda' | translate }}</p>
+            </nz-card>
+          </div>
+          <div nz-col [nzSpan]="12" [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="8" style="padding:30px; text-align: center;">
+            <nz-card class="gradiente" [nzLoading]="loading">
+              <p class="xx-large">{{totais.totalLucro | currency:'BRL':true:'1.2-2'}}</p>
+              <p class="large">{{ 'security.carro.field.totalLucro' | translate }}</p>
+            </nz-card>
+          </div>
+        </div>
+      </nz-collapse-panel>
+    </nz-collapse>
+    <ng-template #extraTpl>
+      <i nz-icon nzType="dollar"></i>
+    </ng-template>
 </nz-card>

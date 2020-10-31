@@ -13,7 +13,7 @@ export interface InitialSortConfig {
 export class FilteredTableWrapper<TResumo> {
 
   public sortField: string;
-  public sortOrder: Order;
+  public sortOrder: string;
   public pageSize = 10;
   public pageIndex = 1;
   public dataset: ListaPaginadaModel<TResumo> = new ListaPaginadaModel();
@@ -42,7 +42,7 @@ export class FilteredTableWrapper<TResumo> {
     this.filtro = filter;
   }
 
-  public direction(field: string): 'ascend' | 'descend' | null {
+  public direction(field: string): string {
     return this.sortField === field ? this.sortOrder : null;
   }
 

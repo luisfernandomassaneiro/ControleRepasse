@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -53,8 +54,9 @@ public class Carro {
     @Basic(fetch = FetchType.LAZY)
     private BigDecimal valorVenda;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "data")
-    private LocalDate data;
+    private Date data;
 
     @OneToMany(mappedBy = "carro", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @Basic(fetch = FetchType.LAZY)

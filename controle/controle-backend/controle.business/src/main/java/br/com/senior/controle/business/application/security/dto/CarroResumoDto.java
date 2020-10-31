@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class CarroResumoDto {
@@ -16,5 +17,5 @@ public class CarroResumoDto {
     private String comprador;
     private BigDecimal valorCompra;
     private BigDecimal valorVenda;
-    private LocalDate data;
+    private Date data;
 }
