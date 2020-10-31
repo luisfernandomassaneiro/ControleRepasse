@@ -20,7 +20,11 @@ export class CarroListarComponent {
 
   constructor(private service: CarroService, private router: Router, private route: ActivatedRoute,
               filterService: PersistentFilterService, public hash: HashService) {
-    this.gridWrapper = new FilteredTableWrapper(service, this.filtro, null, filterService);
+    const inicialSort = {
+      field: 'data',
+      order: 'descend'
+    };         
+    this.gridWrapper = new FilteredTableWrapper(service, this.filtro, inicialSort, filterService);
   }
 
   delete(item: CarroResumoModel): void {

@@ -7,7 +7,7 @@ export type Order = 'ascend' | 'descend' | null;
 
 export interface InitialSortConfig {
   field: string;
-  order: Order;
+  order: string;
 }
 
 export class FilteredTableWrapper<TResumo> {

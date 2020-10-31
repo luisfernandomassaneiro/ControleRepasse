@@ -25,7 +25,14 @@
         (nzPageSizeChange)="gridWrapper.refresh()">
         <thead (nzSortOrderChange)="gridWrapper.sort($event)">
           <tr *ngIf="gridWrapper.dataset.itens?.length">
+            <th nzShowSort nzColumnKey='data' [nzSortOrder]="gridWrapper.direction('data')">{{ 'security.carro.field.data' | translate }}</th>
             <th nzShowSort nzColumnKey='descricao' [nzSortOrder]="gridWrapper.direction('descricao')">{{ 'security.carro.field.descricao' | translate }}</th>
+            <th nzShowSort nzColumnKey='valorCompra' [nzSortOrder]="gridWrapper.direction('valorCompra')">{{ 'security.carro.field.valorcompra' | translate }}</th>
+            <th>{{ 'security.carro.field.valorvenda' | translate }}</th>
+            <th>{{ 'security.carro.field.vendedor' | translate }}</th>
+            <th>{{ 'security.carro.field.comprador' | translate }}</th>
+            <th>{{ 'security.carro.field.vendedor' | translate }}</th>
+            <th>{{ 'security.carro.field.comprador' | translate }}</th>
             <th class="center">{{ 'general.labels.actions' | translate }}</th>
           </tr>
         </thead>
