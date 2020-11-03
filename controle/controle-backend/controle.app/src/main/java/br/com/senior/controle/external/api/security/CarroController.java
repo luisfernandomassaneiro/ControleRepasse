@@ -1,6 +1,7 @@
 package br.com.senior.controle.external.api.security;
 
 import br.com.senior.controle.business.application.security.dto.AnexoDto;
+import br.com.senior.controle.business.application.security.dto.CarroTotaisDto;
 import br.com.senior.controle.business.application.security.usecase.carro.*;
 import br.com.senior.controle.business.entity.security.Anexo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,5 +77,8 @@ public class CarroController {
         }
         return facade.execute(uc);
     }
+
+    @GetMapping("/totais")
+    public CarroTotaisDto buscarTotais(UcListarTotaisCarro filtro) { return facade.execute(filtro); }
 
 }

@@ -10,6 +10,8 @@ import { CrudService } from '@shared/services/base/crud.service';
 import { HashService } from '@shared/services/hash.service';
 
 import { Observable } from 'rxjs';
+import { CarroTotaisModel } from '../models/carro-totais.model';
+import { QueryStringUtils } from '@shared/utils/querystring.utils';
 
 @Injectable()
 export class CarroService extends CrudService<CarroResumoModel> implements Resolve<CarroModel> {
@@ -24,6 +26,11 @@ export class CarroService extends CrudService<CarroResumoModel> implements Resol
 
   resolve(route: ActivatedRouteSnapshot): Observable<CarroModel> {
     return this.get(this.hash.decode(route.params.id));
+  }
+
+  buscaTotais(filtro: any): Observable<CarroTotaisModel> {
+    const params = QueryStringUtils.buildQueryParams(filtro);
+    return this.http.get<CarroTotaisModel>(this.baseUrl() + '/totais', { params: params });
   }
 
 }

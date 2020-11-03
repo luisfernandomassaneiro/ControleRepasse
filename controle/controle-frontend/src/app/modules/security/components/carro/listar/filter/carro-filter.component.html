@@ -1,5 +1,5 @@
 
-<app-filter-layout [grid]="grid" [size]="7">
+<app-filter-layout [grid]="grid" [size]="7" (filtrar)="filtrar($event)">
   <div nz-row [nzGutter]="16">
     <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
       <app-form-item label="security.carro.field.descricao">
@@ -40,9 +40,14 @@
                 [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" />
       </app-form-item>
     </div>
-    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
-      <app-form-item label="security.carro.field.data">
-        <nz-range-picker [(ngModel)]="filtro.data" [nzFormat]="'dd/MM/yyyy'" (ngModelChange)="onChange($event)"></nz-range-picker>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="3">
+      <app-form-item label="security.carro.field.dataInicial">
+          <app-date-picker [(ngModel)]="filtro.dataInicial"></app-date-picker>
+      </app-form-item>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="3">
+      <app-form-item label="security.carro.field.dataFinal">
+          <app-date-picker [(ngModel)]="filtro.dataFinal"></app-date-picker>
       </app-form-item>
     </div>
   </div>

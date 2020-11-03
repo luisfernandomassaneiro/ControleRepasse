@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FilteredTableWrapper } from '@shared/utils/filtered-table.wrapper';
 
 type FieldCount = 0 | 1 | 2 | 3;
@@ -14,6 +14,7 @@ export class FilterFieldComponent implements OnInit {
   @Input() advanced: TemplateRef<void>;
   @Input() grid: FilteredTableWrapper<any>;
   @Input() size: FieldCount = 3;
+  @Output() filtrar: EventEmitter<Boolean> = new EventEmitter();
   container = 18;
 
   ngOnInit(): void {
@@ -21,5 +22,10 @@ export class FilterFieldComponent implements OnInit {
     if (this.container === 0) {
       this.container = 6;
     }
+  }
+
+  onSubmit(): void {
+    this.grid.refresh(true);
+    this.filtrar.emit(true);
   }
 }

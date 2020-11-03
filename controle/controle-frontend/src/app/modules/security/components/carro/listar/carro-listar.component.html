@@ -4,12 +4,12 @@
 
 <nz-card>
 
-<app-carro-filter [filtro]="filtro" [grid]="gridWrapper"></app-carro-filter>
+<app-carro-filter [filtro]="filtro" [grid]="gridWrapper" (filtrarEmit)="filtrar($event)"></app-carro-filter>
 
 <hr/>
 
 <app-list-buttons
-    (export)="report($event)"
+    [imprimir]="true"
     [link]="['../incluir']"
 ></app-list-buttons>
 
@@ -28,12 +28,12 @@
             <th nzShowSort nzColumnKey='data' [nzSortOrder]="gridWrapper.direction('data')">{{ 'security.carro.field.data' | translate }}</th>
             <th nzShowSort nzColumnKey='descricao' [nzSortOrder]="gridWrapper.direction('descricao')">{{ 'security.carro.field.descricao' | translate }}</th>
             <th nzShowSort nzColumnKey='valorCompra' [nzSortOrder]="gridWrapper.direction('valorCompra')">{{ 'security.carro.field.valorcompra' | translate }}</th>
-            <th>{{ 'security.carro.field.valorvenda' | translate }}</th>
-            <th>{{ 'security.carro.field.vendedor' | translate }}</th>
-            <th>{{ 'security.carro.field.comprador' | translate }}</th>
-            <th>{{ 'security.carro.field.vendedor' | translate }}</th>
-            <th>{{ 'security.carro.field.placa' | translate }}</th>
-            <th>{{ 'security.carro.field.renavam' | translate }}</th>
+            <th nzShowSort nzColumnKey='valorVenda' [nzSortOrder]="gridWrapper.direction('valorVenda')">{{ 'security.carro.field.valorvenda' | translate }}</th>
+            <th nzShowSort nzColumnKey='vendedor' [nzSortOrder]="gridWrapper.direction('vendedor')">{{ 'security.carro.field.vendedor' | translate }}</th>
+            <th nzShowSort nzColumnKey='comprador' [nzSortOrder]="gridWrapper.direction('comprador')">{{ 'security.carro.field.comprador' | translate }}</th>
+            <th nzShowSort nzColumnKey='vendedor' [nzSortOrder]="gridWrapper.direction('vendedor')">{{ 'security.carro.field.vendedor' | translate }}</th>
+            <th nzShowSort nzColumnKey='placa' [nzSortOrder]="gridWrapper.direction('placa')">{{ 'security.carro.field.placa' | translate }}</th>
+            <th nzShowSort nzColumnKey='renavam' [nzSortOrder]="gridWrapper.direction('renavam')">{{ 'security.carro.field.renavam' | translate }}</th>
             <th class="center">{{ 'general.labels.actions' | translate }}</th>
           </tr>
         </thead>
