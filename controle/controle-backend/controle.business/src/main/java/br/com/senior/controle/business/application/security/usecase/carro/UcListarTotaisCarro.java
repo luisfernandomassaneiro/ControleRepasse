@@ -6,12 +6,15 @@ import br.com.senior.controle.business.repository.security.CarroRepository;
 import br.com.senior.controle.lib.business.application.usecase.UseCase;
 import com.querydsl.core.BooleanBuilder;
 import lombok.Setter;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import static br.com.senior.controle.business.entity.security.QCarro.carro;
 import static br.com.senior.controle.lib.business.application.commom.QueryDslExpressionUtils.*;
@@ -43,7 +46,7 @@ public class UcListarTotaisCarro extends UseCase<CarroTotaisDto> {
         filtro.and(nullSafeContainsIgnoreCase(carro.comprador, comprador));
         filtro.and(nullSafeEq(carro.valorCompra, valorCompra));
         filtro.and(nullSafeEq(carro.valorVenda, valorVenda));
-        filtro.and(nullSafeBetween(carro.data, dataInicial, dataFinal));
+        filtro.and(nullSafeBetween(carro.data, Objects.nonNull(dataInicial) ? DateUtils.addSeconds(DateUtils.truncate(DateUtils.addDays(dataInicial, 1),  Calendar.DATE), -1) : null, Objects.nonNull(dataFinal) ? DateUtils.addSeconds(DateUtils.truncate(DateUtils.addDays(dataFinal, 1),  Calendar.DATE) , -1) : null));
 
         CarroTotaisDto carroTotaisDto = new CarroTotaisDto();
 

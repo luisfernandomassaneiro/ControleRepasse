@@ -54,16 +54,21 @@ export class CarroManterComponent implements OnInit {
       this.breadcrumb.push({label: 'general.labels.add'});
     }
 
+    this.loadForm();
+    
+  }
+
+  loadForm() {
     this.form = this.formBuilder.group({
       id: [this.entity.id, []],
-      descricao: [this.entity.descricao, [Validators.required, ]],
-      placa: [this.entity.placa, []],
-      renavam: [this.entity.renavam, []],
-      vendedor: [this.entity.vendedor, []],
-      comprador: [this.entity.comprador, []],
-      valorCompra: [this.entity.valorCompra, []],
-      valorVenda: [this.entity.valorVenda, []],
-      data: [this.entity.data, []],
+      descricao: [this.entity.descricao, [Validators.required]],
+      placa: [this.entity.placa, [Validators.required]],
+      renavam: [this.entity.renavam, [Validators.required]],
+      vendedor: [this.entity.vendedor, [Validators.required]],
+      comprador: [this.entity.comprador, [Validators.required]],
+      valorCompra: [this.entity.valorCompra, [Validators.required]],
+      valorVenda: [this.entity.valorVenda, [Validators.required]],
+      data: [this.entity.data ? this.entity.data : new Date(), [Validators.required]],
     });
   }
 
@@ -90,8 +95,19 @@ export class CarroManterComponent implements OnInit {
   };
 
   beforeUpload = (file: File): boolean => {
-    this.uploadFile(file);
-    this.message.notify('Imagem incluída com sucesso!', NotificationType.Success);
+    if (this.entity.id) {
+      this.uploadFile(file);
+    } else {
+      if (!ReactiveFormsUtils.eval(this.form)) {
+        return false;
+      }
+
+      this.service.saveAndNotify(this.form.value, this.form.value.id).then(entity => {
+        this.entity = entity as CarroModel;
+        this.loadForm();
+        this.uploadFile(file);
+      });
+    }
     return false;
   }
 
@@ -110,44 +126,26 @@ export class CarroManterComponent implements OnInit {
       })
     });
   };
-/*
-  nzRemove = (file: NzUploadFile): boolean => {
-    this.modal.confirm({
-      nzTitle: 'Tem certeza que deseja excluir essa imagem?',
-      nzContent: '<b style="color: red;">Essa operação não poderá ser desfeita</b>',
-      nzOkText: 'Sim',
-      nzOkType: 'danger',
-      nzOnOk: () => {
-        this.anexoService.delete(Number(file.uid)).subscribe(() => {})
-        return true;
-      },
-      nzCancelText: 'Não',
-      nzOnCancel: () => {
-        return false;
-      }
+
+  public confirm(): Promise<boolean> {
+    return new Promise((resolve) => {
+      const ref = this.modal.confirm({
+        nzTitle: 'Tem certeza que deseja excluir essa imagem?',
+        nzContent: '<b style="color: red;">Essa operação não poderá ser desfeita</b>',
+        nzOkText: 'Sim',
+        nzOkType: 'danger',
+        nzCancelText: 'Não',
+        nzOnOk: () => new Promise(() => {
+          resolve(true);
+          ref.close();
+        }),
+        nzOnCancel: () => new Promise(() => {
+          resolve(false);
+          ref.close();
+        }),
+      });
     });
   }
-*/
-
-public confirm(): Promise<boolean> {
-  return new Promise((resolve) => {
-    const ref = this.modal.confirm({
-      nzTitle: 'Tem certeza que deseja excluir essa imagem?',
-      nzContent: '<b style="color: red;">Essa operação não poderá ser desfeita</b>',
-      nzOkText: 'Sim',
-      nzOkType: 'danger',
-      nzCancelText: 'Não',
-      nzOnOk: () => new Promise(() => {
-        resolve(true);
-        ref.close();
-      }),
-      nzOnCancel: () => new Promise(() => {
-        resolve(false);
-        ref.close();
-      }),
-    });
-  });
-}
 
   uploadFile(arquivo: File) {
     const formData = new FormData();
@@ -155,7 +153,6 @@ public confirm(): Promise<boolean> {
     if (this.entity.id) {
       formData.append('carroId', JSON.stringify(this.entity.id));
     }
-    console.log(arquivo) 
     formData.append('arquivo', arquivo);
 
     this.anexoService
@@ -168,6 +165,7 @@ public confirm(): Promise<boolean> {
           name: arquivo.name
         } 
         this.fileList = [...this.fileList, imagem];
+        this.message.notify('Imagem incluída com sucesso!', NotificationType.Success);
       });
   }
 

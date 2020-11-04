@@ -9,41 +9,41 @@
               </app-form-item>
           </div>
           <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
-              <app-form-item label="security.carro.field.placa" controlName="placa">
+              <app-form-item label="security.carro.field.placa" controlName="placa" [required]="true">
                   <input nz-input type="text" formControlName='placa' [maxLength]='255'/>
               </app-form-item>
           </div>
           <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
-              <app-form-item label="security.carro.field.renavam" controlName="renavam">
+              <app-form-item label="security.carro.field.renavam" controlName="renavam" [required]="true">
                   <input nz-input type="text" formControlName='renavam' [maxLength]='255'/>
               </app-form-item>
           </div>
           <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
-              <app-form-item label="security.carro.field.vendedor" controlName="vendedor">
+              <app-form-item label="security.carro.field.vendedor" controlName="vendedor" [required]="true">
                   <input nz-input type="text" formControlName='vendedor' [maxLength]='255'/>
               </app-form-item>
           </div>
       </div>
       <div nz-row nzGutter="16">
           <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
-              <app-form-item label="security.carro.field.comprador" controlName="comprador">
+              <app-form-item label="security.carro.field.comprador" controlName="comprador" [required]="true">
                   <input nz-input type="text" formControlName='comprador' [maxLength]='255'/>
               </app-form-item>
           </div>
           <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
-              <app-form-item label="security.carro.field.valorcompra" controlName="valorCompra">
+              <app-form-item label="security.carro.field.valorcompra" controlName="valorCompra" [required]="true">
                 <input currencyMask nz-input type="text" formControlName='valorCompra'
                 [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" />
               </app-form-item>
           </div>
           <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
-              <app-form-item label="security.carro.field.valorvenda" controlName="valorVenda">
+              <app-form-item label="security.carro.field.valorvenda" controlName="valorVenda" [required]="true">
                 <input currencyMask nz-input type="text" formControlName='valorVenda'
                 [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" />
               </app-form-item>
           </div>
           <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
-              <app-form-item label="security.carro.field.data" controlName="data">
+              <app-form-item label="security.carro.field.data" controlName="data" [required]="true">
                   <app-date-picker formControlName='data'></app-date-picker>
               </app-form-item>
           </div>

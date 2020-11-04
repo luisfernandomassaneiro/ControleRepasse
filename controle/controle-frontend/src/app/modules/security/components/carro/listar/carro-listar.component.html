@@ -31,7 +31,6 @@
             <th nzShowSort nzColumnKey='valorVenda' [nzSortOrder]="gridWrapper.direction('valorVenda')">{{ 'security.carro.field.valorvenda' | translate }}</th>
             <th nzShowSort nzColumnKey='vendedor' [nzSortOrder]="gridWrapper.direction('vendedor')">{{ 'security.carro.field.vendedor' | translate }}</th>
             <th nzShowSort nzColumnKey='comprador' [nzSortOrder]="gridWrapper.direction('comprador')">{{ 'security.carro.field.comprador' | translate }}</th>
-            <th nzShowSort nzColumnKey='vendedor' [nzSortOrder]="gridWrapper.direction('vendedor')">{{ 'security.carro.field.vendedor' | translate }}</th>
             <th nzShowSort nzColumnKey='placa' [nzSortOrder]="gridWrapper.direction('placa')">{{ 'security.carro.field.placa' | translate }}</th>
             <th nzShowSort nzColumnKey='renavam' [nzSortOrder]="gridWrapper.direction('renavam')">{{ 'security.carro.field.renavam' | translate }}</th>
             <th class="center">{{ 'general.labels.actions' | translate }}</th>
@@ -43,8 +42,8 @@
             <td>{{ data.descricao }}</td>
             <td>{{ data.valorCompra | currency:'BRL':true:'1.2-2' }}
             <td>{{ data.valorVenda | currency:'BRL':true:'1.2-2' }}
-            <td>{{ data.comprador }}</td>
             <td>{{ data.vendedor }}</td>
+            <td>{{ data.comprador }}</td>
             <td>{{ data.placa }}</td>
             <td>{{ data.renavam }}</td>
             <td class="actions-column" (click)="$event.stopPropagation()">
