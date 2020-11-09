@@ -42,12 +42,12 @@
     </div>
     <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="3">
       <app-form-item label="security.carro.field.dataInicial">
-          <app-date-picker [(ngModel)]="filtro.dataInicial"></app-date-picker>
+          <nz-date-picker [(ngModel)]="filtro.dataInicial" [nzFormat]="'dd/MM/yyyy'"></nz-date-picker>
       </app-form-item>
     </div>
     <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="3">
       <app-form-item label="security.carro.field.dataFinal">
-          <app-date-picker [(ngModel)]="filtro.dataFinal"></app-date-picker>
+          <nz-date-picker [(ngModel)]="filtro.dataFinal" [nzFormat]="'dd/MM/yyyy'"></nz-date-picker>
       </app-form-item>
     </div>
   </div>

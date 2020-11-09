@@ -23,6 +23,8 @@ export class CarroListarComponent {
 
   constructor(private service: CarroService, private router: Router, private route: ActivatedRoute,
               filterService: PersistentFilterService, public hash: HashService) {
+    this.filtro.dataFinal = new Date();
+    this.filtro.dataInicial = new Date(this.filtro.dataFinal.getFullYear() + '-' + (this.filtro.dataFinal.getMonth()+1) + '-1');
     const inicialSort = {
       field: 'data',
       order: 'descend'
