@@ -49,8 +49,7 @@
 
       <div [nzMd]="8" nz-col>
         <app-form-item controlName="nascimento" label="security.usuario.field.nascimento">
-          <app-date-picker [closeOnSelect]="true" [nzPlaceHolder]="'Informe a Data'"
-                           formControlName="nascimento"></app-date-picker>
+          <nz-date-picker formControlName="nascimento" [nzFormat]="'dd/MM/yyyy'"></nz-date-picker>
         </app-form-item>
       </div>
 

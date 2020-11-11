@@ -44,7 +44,7 @@
           </div>
           <div nz-col [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="6">
               <app-form-item label="security.carro.field.data" controlName="data" [required]="true">
-                  <app-date-picker formControlName='data'></app-date-picker>
+                  <nz-date-picker formControlName='data' [nzFormat]="'dd/MM/yyyy'"></nz-date-picker>
               </app-form-item>
           </div>
       </div>
